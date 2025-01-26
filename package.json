@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fileverse/agents": "^0.0.3",
     "dotenv": "^16.4.7",
     "ollama": "^0.5.12"
   }
