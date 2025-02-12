@@ -12,19 +12,20 @@ const agent = new Agent({
   pimlicoAPIKey: process.env.PIMLICO_API_KEY,
 });
 
-await agent.setupSafe();
-
 await agent.setupStorage("deepseek-r1");
 
-const input = "Why is the sky blue? in short please hello world dadadaadadadada!"
-console.log('input: ', input);
-// const response = await ollama.chat({
-//   model: 'deepseek-r1',
-//   messages: [{ role: 'user', content: input }],
-// })
+console.log('Portal Address: ', await agent.getPortal());
 
-// const output = response.message.content;
-// console.log('output: ', output);
-await agent.update(1, input);
+const input = "Why is the sky blue? in short please"
+console.log('input: ', input);
+const response = await ollama.chat({
+  model: 'deepseek-r1',
+  messages: [{ role: 'user', content: input }],
+})
+
+const output = response.message.content;
+console.log('output: ', output);
+
+await agent.create(output);
 
 console.log('done');
